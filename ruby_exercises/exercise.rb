@@ -67,9 +67,9 @@ member = {
 
 # Yes, we can have an array of hashes.  Like so
 employees = [
-             {number: 1, name: 'Bob', salary: '100k'},
-             {number: 50, name: 'Smith,', salary: '117k'},
-             {number: 100, name: 'Emily', salary: '150k'}
-             ]
+	{number: 1, name: 'Bob', salary: '100k'},
+	{number: 50, name: 'Smith,', salary: '117k'},
+	{number: 100, name: 'Emily', salary: '150k'}
+]
 
 #15. Look at several Rails/Ruby online API sources and say which one your like best and why.
