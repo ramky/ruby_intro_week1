@@ -73,3 +73,6 @@ employees = [
 ]
 
 #15. Look at several Rails/Ruby online API sources and say which one your like best and why.
+
+# http://rubydoc.org/stdlib/core/1.9.3/frames
+# I like it because it is very comprehensive
