@@ -141,10 +141,6 @@ while true
 
   # Compare hands
   unless prompt_another_game
-    #puts "Dealer has #{cards_to_string(dealer_cards)}, for a total of #{dealer_total}"
-    #puts "#{player_name} has #{cards_to_string(my_cards)}, for a total of #{my_total}"
-    #puts 
-
     if dealer_total > my_total
       puts "#{player_name} loses."
     elsif my_total > dealer_total
