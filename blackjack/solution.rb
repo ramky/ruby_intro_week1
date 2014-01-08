@@ -85,7 +85,7 @@ while true
     print "What would you like to do? Press h to hit or s to stay. "
     input = gets.chomp.downcase
     unless %w[h s].include?(input)
-      puts "Error: you must enter h or s."
+      puts "Error: You must enter h or s."
       next
     end
 
@@ -154,7 +154,7 @@ while true
   print "Do you want to play another game[y/n]? "
   answer = gets.chomp.downcase
   unless %w[y n].include?(answer)
-    puts "Error: you must enter y or n."
+    puts "Error: You must enter y or n."
     next    
   end
   if answer == 'n'
