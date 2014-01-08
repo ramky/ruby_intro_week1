@@ -146,7 +146,7 @@ while true
     elsif my_total > dealer_total
       puts "#{player_name} wins."
     else
-      puts "Would you belive it? It's a tie!"
+      puts "Would you believe it? It's a tie!"
     end
   end
 
