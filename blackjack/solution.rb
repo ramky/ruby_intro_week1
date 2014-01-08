@@ -1,19 +1,5 @@
 #!/usr/bin/env ruby
 
-SUITS = {
-  'H' => 'Hearts',
-  'D' => 'Diamonds',
-  'S' => 'Spades',
-  'C' => 'Clubs'
-}
-
-CARDS = {
-  'J' => 'Jack',
-  'Q' => 'Queen',
-  'K' => 'King',
-  'A' => 'Ace'
-}
-
 def calculate_total(cards)
   # cards come in like this - ['S', 'K'],['C', '3']
   total = 0
@@ -44,10 +30,22 @@ def cards_to_string(cards)
   "[#{str_array.join(', ')}]"
 end
 
+SUITS = {
+  'H' => 'Hearts',
+  'D' => 'Diamonds',
+  'S' => 'Spades',
+  'C' => 'Clubs'
+}
+
+CARDS = {
+  'J' => 'Jack',
+  'Q' => 'Queen',
+  'K' => 'King',
+  'A' => 'Ace'
+}
 suits = %w[H D S C]
 cards = %w[2 3 4 5 6 7 8 9 10 J Q K A]
 
-# Do it until player wants to quit
 prompt_another_game = false
 
 while true
