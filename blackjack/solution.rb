@@ -116,7 +116,6 @@ while true && answer == 'y'
     puts "Dealing new card to #{player_name}."
     puts "#{player_name} now has #{cards_to_string(player_cards)}, for a total of #{player_total}"
     puts "Dealer showing #{dealer_cards[0]}"
-    puts 
 
     if player_total == WIN_SCORE
       show_cards(player_cards, dealer_cards, player_total, dealer_total, player_name)
@@ -143,7 +142,6 @@ while true && answer == 'y'
     dealer_total = calculate_total(dealer_cards)
 
     puts "Dealing new card to dealer."
-    puts
 
     if dealer_total == WIN_SCORE
       show_cards(player_cards, dealer_cards, player_total, dealer_total, player_name)  
