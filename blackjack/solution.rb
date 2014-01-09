@@ -16,7 +16,7 @@ def calculate_total(cards)
 
   # Correct for Aces
   array.select{|e| e == 'A'}.count.times do
-    total -= 10 if total > 21
+    total -= 10 if total > WIN_SCORE
   end
 
   total
@@ -49,6 +49,10 @@ CARDS = {
   'K' => 'King',
   'A' => 'Ace'
 }
+
+WIN_SCORE = 21
+DEALER_CUTOFF = 17
+
 suits = %w[H D S C]
 cards = %w[2 3 4 5 6 7 8 9 10 J Q K A]
 
@@ -74,7 +78,7 @@ while true && answer == 'y'
   dealer_cards << deck.pop
 
   dealer_total = calculate_total(dealer_cards)
-  player_total     = calculate_total(player_cards)
+  player_total = calculate_total(player_cards)
 
   # Show Cards
 
@@ -82,12 +86,16 @@ while true && answer == 'y'
   puts "#{player_name} has #{cards_to_string(player_cards)}, for a total of #{player_total}"
   puts 
 
-  if player_total == 21
-    puts "#{player_name} hit blackjack! #{player_name} wins!"
+  if player_total == WIN_SCORE
+    if dealer_total == WIN_SCORE
+      puts "Would you believe it? It's a tie!"
+    else
+      puts "#{player_name} hit blackjack! #{player_name} wins!"
+    end
     prompt_another_game = true
   end
 
-  while player_total < 21 && !prompt_another_game
+  while player_total < WIN_SCORE && !prompt_another_game
     print "What would you like to do? Press h to hit or s to stay. "
     input = gets.chomp.downcase
     unless %w[h s].include?(input)
@@ -110,11 +118,11 @@ while true && answer == 'y'
     puts "Dealer showing #{dealer_cards[0]}"
     puts 
 
-    if player_total == 21
+    if player_total == WIN_SCORE
       show_cards(player_cards, dealer_cards, player_total, dealer_total, player_name)
       puts "#{player_name} hit blackjack! #{player_name} wins!"
       prompt_another_game = true
-    elsif player_total > 21
+    elsif player_total > WIN_SCORE
       show_cards(player_cards, dealer_cards, player_total, dealer_total, player_name)
       puts "#{player_name} busted!"
       prompt_another_game = true
@@ -122,13 +130,13 @@ while true && answer == 'y'
   end
 
   # Dealer's turn
-  if dealer_total == 21 && !prompt_another_game
+  if dealer_total == WIN_SCORE && !prompt_another_game
     show_cards(player_cards, dealer_cards, player_total, dealer_total, player_name)
     puts "Dealer hit blackjack! #{player_name} loses!"
     prompt_another_game = true
   end
 
-  while dealer_total < 17 && !prompt_another_game
+  while dealer_total < DEALER_CUTOFF && !prompt_another_game
     # Hit
     new_card = deck.pop
     dealer_cards << new_card
@@ -137,11 +145,11 @@ while true && answer == 'y'
     puts "Dealing new card to dealer."
     puts
 
-    if dealer_total == 21
+    if dealer_total == WIN_SCORE
       show_cards(player_cards, dealer_cards, player_total, dealer_total, player_name)  
       puts "Dealer hit blackjack!  #{player_name} loses!"
       prompt_another_game = true
-    elsif dealer_total > 21
+    elsif dealer_total > WIN_SCORE
       show_cards(player_cards, dealer_cards, player_total, dealer_total, player_name)
       puts "Dealer busted! #{player_name} wins!"
       prompt_another_game = true
